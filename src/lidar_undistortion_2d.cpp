@@ -399,7 +399,11 @@ public:
             publish_msg.intensities.push_back(0);
         }
         for(int alpha = ranges.size() - 1; alpha >= 0; --alpha) {
+            //作者的数据要这样显示
             double angle = (angles[alpha] < 0 || tfFuzzyZero(angles[alpha])) ? angles[alpha] + 2 * M_PI : angles[alpha];
+            //我的数据要这样显示
+            //double angle = (angles[alpha] < 0 || tfFuzzyZero(angles[alpha])) ? angles[alpha] + M_PI : angles[alpha] + M_PI;
+
             angle += publish_msg.angle_min;
             int index = (int)((angle - publish_msg.angle_min) / publish_msg.angle_increment);
             if(index >= 0 && index < ranges.size()) {
